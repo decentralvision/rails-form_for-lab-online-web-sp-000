@@ -1,27 +1,27 @@
 class SchoolClass < ActiveRecord::Base
   def show
-    @post = Post.find(params[:id])
+    @school_class = SchoolClass.find(params[:id])
   end
 
   def new
-    @post = Post.new
+    @school_class = SchoolClass.new
   end
 
   def create
-    @post = Post.new
-    @post.title = params[:title]
-    @post.description = params[:description]
-    @post.save
-    redirect_to post_path(@post)
+    @school_class = SchoolClass.new
+    @school_class.title = params[:title]
+    @school_class.description = params[:description]
+    @school_class.save
+    redirect_to school_class_path(@school_class)
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @school_class = SchoolClass.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-    @post.update(params.require(:post).permit(:title, :description))
-    redirect_to post_path(@post)
+    @school_class = SchoolClass.find(params[:id])
+    @school_class.update(params.require(:school_class).permit(:title, :room_number))
+    redirect_to school_class_path(@school_class)
   end
 end
